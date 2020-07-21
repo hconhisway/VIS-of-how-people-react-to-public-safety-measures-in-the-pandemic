@@ -1,0 +1,110 @@
+<!--
+ * @Author: hanchang
+ * @LastModifiedBy: hanchang
+--> 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>舆情态势可视化</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <style>
+      
+  </style>
+  </head>
+  <body>
+    <!--头部的盒子-->
+    <header>
+      <h1>舆情态势可视化</h1>
+      <div class="showTime"></div>
+      <script>
+        var t = null;
+        t = setTimeout(time, 1000); //開始运行
+        function time() {
+          clearTimeout(t); //清除定时器
+          dt = new Date();
+          var y = dt.getFullYear();
+          var mt = dt.getMonth() + 1;
+          var day = dt.getDate();
+          var h = dt.getHours(); //获取时
+          var m = dt.getMinutes(); //获取分
+          var s = dt.getSeconds(); //获取秒
+          document.querySelector(".showTime").innerHTML =
+            "当前时间：" +
+            y +
+            "年" +
+            mt +
+            "月" +
+            day +
+            "-" +
+            h +
+            "时" +
+            m +
+            "分" +
+            s +
+            "秒";
+          t = setTimeout(time, 1000); //设定定时器，循环运行
+        }
+      </script>
+    </header>
+    <!--页面主体盒子-->
+    <section class="mainbox">
+
+      <div class="column">
+        <!--热度地图的位置-->
+        <div class="panel">
+          <div class="data-title">
+            <b class="data-title-left">[</b>
+            <span>舆情信息图谱</span>
+            <b class="data-title-right">]</b>
+          </div>
+          <div class="panel-footer"></div>
+          <div class="worldmap"></div>
+        </div>
+        <div class="filling"></div>
+        
+        <!--词云的位置-->
+        <div class="panel2">
+          <div class="data-title">
+            <b class="data-title-left">[</b>
+            <span>关键词：口罩/封城</span>
+            <b class="data-title-right">]</b>
+            <div class="fill2"></div>
+          </div>
+          <div class="panel-footer2"></div>
+          
+          <div id="fill2"></div>
+          
+        </div>
+      </div>
+      <div class="column">
+        <!--数据来源说明-->
+        <div class="no">
+          <p>
+            数据来源: 微博，知乎，Twitter，Google Trends，百度指数
+          </p>
+          <br>
+          <p>
+            数据时间: 从2020年1月15日0时，截止到2020年6月2日23时，抽取了部分数据
+          </p>
+        </div>
+        
+        <!--图谱的位置-->
+        <div class="atlas">
+          <div class="map1"></div>
+          <div class="map2"></div>
+          <div class="map3"></div>
+          <div class="chart" id="map"></div>
+        </div>
+    </section>
+    <script src="js/flexible.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src='js/echarts.min.js'></script>
+    <script src='js/echarts-wordcloud.js'></script>
+    <script src="js/index.js"></script>
+    <script src="js/wordcloud.js"></script>
+	<script src="js/china.js"></script>
+    <script src="js/map.js"></script>
+  </body>
+</html>
